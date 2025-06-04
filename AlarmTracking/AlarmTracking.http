@@ -1,0 +1,6 @@
+@AlarmTracking_HostAddress = http://localhost:5276
+
+GET {{AlarmTracking_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
