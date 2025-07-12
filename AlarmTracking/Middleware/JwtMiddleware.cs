@@ -1,43 +1,49 @@
-﻿namespace AlarmTracking.WebService.Middleware
+﻿using AlarmTracking.Application.Contracts.Infrastructure;
+
+namespace AlarmTracking.WebService.Middleware
 {
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ITokenService _tokenService;
+        private readonly ILogger<JwtMiddleware> _logger;
 
-        public JwtMiddleware(RequestDelegate next, ITokenService tokenService)
+        public JwtMiddleware(RequestDelegate next, ILogger<JwtMiddleware> logger)
         {
             _next = next;
-            _tokenService = tokenService;
+            _logger = logger;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, IJwtService jwtService)
         {
             var token = context.Request.Headers["Authorization"]
                 .FirstOrDefault()?.Split(" ").Last();
 
-            if (token != null)
+            if (!string.IsNullOrEmpty(token))
             {
-                await AttachUserToContext(context, token);
+                try
+                {
+                    var userId = jwtService.GetUserIdFromToken(token);
+                    if (userId.HasValue)
+                    {
+                        // Add user ID to context for easy access
+                        context.Items["UserId"] = userId.Value;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Invalid JWT token");
+                }
             }
 
             await _next(context);
         }
+    }
 
-        private async Task AttachUserToContext(HttpContext context, string token)
+    public static class JwtMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseJwtMiddleware(this IApplicationBuilder builder)
         {
-            try
-            {
-                var principal = await _tokenService.ValidateTokenAsync(token);
-                if (principal != null)
-                {
-                    context.User = principal;
-                }
-            }
-            catch
-            {
-                // Invalid token, do nothing
-            }
+            return builder.UseMiddleware<JwtMiddleware>();
         }
     }
 }

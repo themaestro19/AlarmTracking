@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmTracking.WebService", "AlarmTracking\AlarmTracking.WebService.csproj", "{3D8EA7CF-42D1-4296-9DF9-439B773B44DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmTracking.Domain", "AlarmTracking.Core\AlarmTracking.Domain.csproj", "{62181267-E560-4877-9055-A0DC9BA3599D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmTracking.DataAccess", "AlarmTracking.DataAccess\AlarmTracking.DataAccess.csproj", "{34A0FE80-F712-4349-9652-1CB69D9B3F94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmTracking.Application", "AlarmTracking.Application\AlarmTracking.Application.csproj", "{E3EC7E2C-47F7-4005-AA2E-463DCEE4DCE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{3D8EA7CF-42D1-4296-9DF9-439B773B44DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D8EA7CF-42D1-4296-9DF9-439B773B44DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D8EA7CF-42D1-4296-9DF9-439B773B44DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62181267-E560-4877-9055-A0DC9BA3599D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62181267-E560-4877-9055-A0DC9BA3599D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62181267-E560-4877-9055-A0DC9BA3599D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62181267-E560-4877-9055-A0DC9BA3599D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A0FE80-F712-4349-9652-1CB69D9B3F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A0FE80-F712-4349-9652-1CB69D9B3F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A0FE80-F712-4349-9652-1CB69D9B3F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A0FE80-F712-4349-9652-1CB69D9B3F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3EC7E2C-47F7-4005-AA2E-463DCEE4DCE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EC7E2C-47F7-4005-AA2E-463DCEE4DCE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EC7E2C-47F7-4005-AA2E-463DCEE4DCE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EC7E2C-47F7-4005-AA2E-463DCEE4DCE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
